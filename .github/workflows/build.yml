@@ -36,13 +36,3 @@ jobs:
           docker push manikemounika/netflix2:tagname
         env:
           DOCKER_CLI_ACI: 1
-  deploy:
-    needs: build-analyze-scan
-    runs-on: [aws-netflix]
-    steps:
-      - name: Pull the docker image
-        run: docker pull manikemounika/netflix2:tagname
-      - name: Trivy image scan
-        run: trivy image manikemounika/netflix2:tagname
-      - name: Run the container netflix
-        run: docker run -d --name netflix -p 8081:80 manikemounika/netflix2:tagname
