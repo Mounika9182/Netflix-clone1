@@ -32,7 +32,7 @@ jobs:
           #run commands to build and push docker images
           docker build --build-arg TMDB_V3_API_KEY=b32c0fc7ac0bd32a28e54ad40c52905b -t netflix .
           docker tag netflix manikemounika/netflix2:tagname
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} P ${{ secrets.DOCKERHUB_TOKEN }}
           docker push manikemounika/netflix2:tagname
         env:
           DOCKER_CLI_ACI: 1
